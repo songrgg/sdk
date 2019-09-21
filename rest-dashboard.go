@@ -220,6 +220,9 @@ func (r *Client) SetRawDashboard(raw []byte, folderId int) error {
 	if err = json.Unmarshal(raw, &plain); err != nil {
 		return err
 	}
+	// TODO clean the uid, rely on the `title` to generate slug
+	delete(plain, "uid")
+
 	raw, _ = json.Marshal(plain)
 	buf.WriteString(`{"dashboard":`)
 	buf.Write(raw)
