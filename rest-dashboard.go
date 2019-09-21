@@ -48,7 +48,7 @@ type BoardProperties struct {
 	HasAcl                bool      `json:"hasAcl"`
 	IsFolder              bool      `json:"isFolder"`
 	FolderUrl             string    `json:"folderUrl"`
-	FolderId              bool      `json:"folderId"`
+	FolderId              int       `json:"folderId"`
 	FolderTitle           string    `json:"folderTitle"`
 	Provisioned           bool      `json:"provisioned"`
 	ProvisionedExternalId string    `json:"provisionedExternalId"`
