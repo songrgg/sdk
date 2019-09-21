@@ -1,6 +1,6 @@
 <!--*- mode:markdown;mode:orgtbl -*-->
 
-# Grafana SDK [![Go Report Card](https://goreportcard.com/badge/github.com/grafana-tools/sdk)](https://goreportcard.com/report/github.com/grafana-tools/sdk)
+# Grafana SDK [![Go Report Card](https://goreportcard.com/badge/github.com/songrgg/sdk)](https://goreportcard.com/report/github.com/songrgg/sdk)
 
 SDK for Go language offers a library for interacting with
 [Grafana](http://grafana.org) server from Go applications.  It
@@ -13,7 +13,7 @@ It would be helpful for massive operations on a large set of
 dashboards for example.
 
 It was made foremost for
-[autograf](https://github.com/grafana-tools/autograf) project but
+[autograf](https://github.com/songrgg/autograf) project but
 later separated from it and moved to this new repository because the
 library is useful per se.
 
@@ -50,7 +50,7 @@ with Grafana then client SDK for Go will be uniquely useful.
    slugify, SDK uses external lib "slug" for algorithm compatibility —
    that is the same package that Grafana server uses.
 
-## Examples [![GoDoc](https://godoc.org/github.com/grafana-tools/sdk?status.svg)](https://godoc.org/github.com/grafana-tools/sdk)
+## Examples [![GoDoc](https://godoc.org/github.com/songrgg/sdk?status.svg)](https://godoc.org/github.com/songrgg/sdk)
 
 ```go
 	board := sdk.NewBoard("Sample dashboard title")
@@ -79,11 +79,11 @@ The library includes several demo apps for showing API usage:
 
 You need Grafana API key with _admin rights_ for using these utilities.
 
-## Installation [![Build Status](https://travis-ci.org/grafana-tools/sdk.svg?branch=master)](https://travis-ci.org/grafana-tools/sdk)
+## Installation [![Build Status](https://travis-ci.org/songrgg/sdk.svg?branch=master)](https://travis-ci.org/songrgg/sdk)
 
 Of course Go development environment should be set up first. Then:
 
-    go get github.com/grafana-tools/sdk
+    go get github.com/songrgg/sdk
 
 Dependency packages have included into
 distro. [govendor](https://github.com/kardianos/govendor) utility used
@@ -99,7 +99,7 @@ Grafana server so it used in the SDK for the compatibility reasons.
 Made mostly for Grafana 3.x, works with Grafana 4.x but need more
 tests. Full support for Grafana 4.x is on the way.
 
-## Status of REST API realization [![Coverage Status](https://coveralls.io/repos/github/grafana-tools/sdk/badge.svg?branch=master)](https://coveralls.io/github/grafana-tools/sdk?branch=master)
+## Status of REST API realization [![Coverage Status](https://coveralls.io/repos/github/songrgg/sdk/badge.svg?branch=master)](https://coveralls.io/github/songrgg/sdk?branch=master)
 
 Work on full API implementation still in progress. Currently
 implemented only create/update/delete operations for dashboards and

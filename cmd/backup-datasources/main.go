@@ -31,7 +31,7 @@ import (
 	"os"
 
 	"github.com/gosimple/slug"
-	"github.com/grafana-tools/sdk"
+	"github.com/songrgg/sdk"
 )
 
 func main() {

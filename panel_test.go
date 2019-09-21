@@ -23,7 +23,7 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/grafana-tools/sdk"
+	"github.com/songrgg/sdk"
 )
 
 func TestStackVal_UnmarshalJSON_GotTrue(t *testing.T) {

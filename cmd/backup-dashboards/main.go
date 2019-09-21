@@ -29,7 +29,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/grafana-tools/sdk"
+	"github.com/songrgg/sdk"
 )
 
 func main() {
