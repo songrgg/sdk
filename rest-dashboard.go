@@ -164,11 +164,12 @@ func (r *Client) SearchDashboards(query string, starred bool, tags ...string) ([
 // newer version or with same dashboard title.
 // Grafana only can create or update a dashboard in a database. File dashboards
 // may be only loaded with HTTP API but not created or updated.
-func (r *Client) SetDashboard(board Board, overwrite bool) error {
+func (r *Client) SetDashboard(board Board, folderId int, overwrite bool) error {
 	var (
 		isBoardFromDB bool
 		newBoard      struct {
 			Dashboard Board `json:"dashboard"`
+			FolderId  int   `json:"folderId"`
 			Overwrite bool  `json:"overwrite"`
 		}
 		raw  []byte
@@ -180,6 +181,7 @@ func (r *Client) SetDashboard(board Board, overwrite bool) error {
 		return errors.New("only database dashboard (with 'db/' prefix in a slug) can be set")
 	}
 	newBoard.Dashboard = board
+	newBoard.FolderId = folderId
 	newBoard.Overwrite = overwrite
 	if !overwrite {
 		newBoard.Dashboard.ID = 0
@@ -206,7 +208,7 @@ func (r *Client) SetDashboard(board Board, overwrite bool) error {
 // Contrary to SetDashboard() it accepts raw JSON instead of Board structure.
 // Grafana only can create or update a dashboard in a database. File dashboards
 // may be only loaded with HTTP API but not created or updated.
-func (r *Client) SetRawDashboard(raw []byte) error {
+func (r *Client) SetRawDashboard(raw []byte, folderId int) error {
 	var (
 		rawResp []byte
 		resp    StatusMessage
@@ -218,11 +220,10 @@ func (r *Client) SetRawDashboard(raw []byte) error {
 	if err = json.Unmarshal(raw, &plain); err != nil {
 		return err
 	}
-	// TODO(axel) fragile place, refactor it
-	plain["id"] = 0
 	raw, _ = json.Marshal(plain)
 	buf.WriteString(`{"dashboard":`)
 	buf.Write(raw)
+	buf.WriteString(fmt.Sprintf(`, "folderId": %d`, folderId))
 	buf.WriteString(`, "overwrite": true}`)
 	if rawResp, code, err = r.post("api/dashboards/db", nil, buf.Bytes()); err != nil {
 		return err
