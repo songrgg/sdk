@@ -222,6 +222,7 @@ func (r *Client) SetRawDashboard(raw []byte, folderId int) error {
 	}
 	// TODO clean the uid, rely on the `title` to generate slug
 	delete(plain, "uid")
+	delete(plain, "id")
 
 	raw, _ = json.Marshal(plain)
 	buf.WriteString(`{"dashboard":`)
